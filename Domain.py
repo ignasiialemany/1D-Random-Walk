@@ -15,10 +15,12 @@ class Domain:
         self.indexBarriers=[]
         self.barriers_position=[]
         self.numberOfCompartments = 0
+        self.dx=0
 
     def createDomain(self):
         #Coordinates in x
         self.xCoordinates = np.linspace(0, self.length, self.nPoints)
+        self.dx = self.xCoordinates[1]-self.xCoordinates[0]
         self.indexBarriers = np.concatenate((np.zeros(1), np.round((self.nPoints) * np.cumsum(self.lengthVector) / self.length)))
         self.barriers_position = self.indexBarriers * (self.length / (self.nPoints - 1))
         self.lengthVector = np.diff(self.barriers_position)
