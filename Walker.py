@@ -8,13 +8,11 @@ class Walker:
     def __init__(self):
         self.position=0
         self.index=0
-        self.dx = 0
 
-    def defineStep(self,dx):
-        self.dx=dx
-
-    def stepWalker(self):
-        return np.random.uniform(-self.dx,self.dx)
+    def stepWalker(self,diffusivity, dt):
+        step = np.random.normal(0,1)
+        step = step * np.sqrt(diffusivity*2*dt)
+        return step
 
     def transitProbability(self):
         return np.random.uniform(0,1)
